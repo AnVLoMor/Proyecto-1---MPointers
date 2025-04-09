@@ -5,8 +5,8 @@ MemoryManagerServiceImpl::MemoryManagerServiceImpl(MemoryManagerModel* model, Me
     : model(model), view(view) {}
 
 grpc::Status MemoryManagerServiceImpl::Create(grpc::ServerContext* context, 
-                                          const mpointers::CreateRequest* request,
-                                          mpointers::CreateResponse* response) {
+                                        const mpointers::CreateRequest* request,
+                                        mpointers::CreateResponse* response) {
     int id = model->Create(request->size(), request->type());
     
     response->set_id(id);
@@ -22,8 +22,8 @@ grpc::Status MemoryManagerServiceImpl::Create(grpc::ServerContext* context,
 }
 
 grpc::Status MemoryManagerServiceImpl::Set(grpc::ServerContext* context, 
-                                       const mpointers::SetRequest* request,
-                                       mpointers::SetResponse* response) {
+                                    const mpointers::SetRequest* request,
+                                    mpointers::SetResponse* response) {
     bool success = model->Set(request->id(), request->value().data(), request->value().size());
     
     response->set_success(success);
@@ -38,8 +38,8 @@ grpc::Status MemoryManagerServiceImpl::Set(grpc::ServerContext* context,
 }
 
 grpc::Status MemoryManagerServiceImpl::Get(grpc::ServerContext* context, 
-                                       const mpointers::GetRequest* request,
-                                       mpointers::GetResponse* response) {
+                                    const mpointers::GetRequest* request,
+                                    mpointers::GetResponse* response) {
     // We need a temporary buffer - we'll use 1MB as a reasonable max size
     const size_t MAX_SIZE = 1024 * 1024;
     std::vector<char> buffer(MAX_SIZE);
@@ -58,8 +58,8 @@ grpc::Status MemoryManagerServiceImpl::Get(grpc::ServerContext* context,
 }
 
 grpc::Status MemoryManagerServiceImpl::IncreaseRefCount(grpc::ServerContext* context, 
-                                                   const mpointers::RefCountRequest* request,
-                                                   mpointers::RefCountResponse* response) {
+                                                const mpointers::RefCountRequest* request,
+                                                mpointers::RefCountResponse* response) {
     bool success = model->IncreaseRefCount(request->id());
     
     response->set_success(success);
@@ -71,8 +71,8 @@ grpc::Status MemoryManagerServiceImpl::IncreaseRefCount(grpc::ServerContext* con
 }
 
 grpc::Status MemoryManagerServiceImpl::DecreaseRefCount(grpc::ServerContext* context, 
-                                                   const mpointers::RefCountRequest* request,
-                                                   mpointers::RefCountResponse* response) {
+                                                const mpointers::RefCountRequest* request,
+                                                mpointers::RefCountResponse* response) {
     bool success = model->DecreaseRefCount(request->id());
     
     response->set_success(success);
