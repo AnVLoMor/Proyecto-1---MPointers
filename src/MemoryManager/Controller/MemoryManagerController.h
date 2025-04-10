@@ -1,7 +1,7 @@
 #pragma once
 
-#include "MemoryManagerModel.h"
-#include "MemoryManagerView.h"
+#include "../Model/MemoryManagerModel.h"
+#include "../View/MemoryManagerView.h"
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>

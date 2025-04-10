@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MemoryManagerModel.h"
+#include "../Model/MemoryManagerModel.h"
 #include <string>
 #include <fstream>
 #include <sstream>

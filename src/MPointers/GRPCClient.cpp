@@ -165,7 +165,7 @@ bool GRPCClient::IncreaseRefCount(int id) {
 
 bool GRPCClient::DecreaseRefCount(int id) {
     if (!connected) {
-        std::cerr << "Not connected to Memory Manager" << std::endl;.
+        std::cerr << "Not connected to Memory Manager" << std::endl;
         return false;
     }
     
